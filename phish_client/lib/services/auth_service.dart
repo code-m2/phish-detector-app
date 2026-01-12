@@ -2,13 +2,14 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import '../config.dart';
 
 class AuthService extends ChangeNotifier {
   String? token;
   String userName = "";
   String userEmail = "";
 
-  final String baseUrl = "http://127.0.0.1:8000";
+  final String baseUrl = AppConfig.apiBaseUrl;
 
   bool get isLoggedIn => token != null;
 

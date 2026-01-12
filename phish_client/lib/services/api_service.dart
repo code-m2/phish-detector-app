@@ -2,8 +2,9 @@
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:flutter/foundation.dart';
 import 'auth_service.dart';
+import '../config.dart';
+
 
 class ApiService {
   final AuthService auth;
@@ -11,8 +12,9 @@ class ApiService {
 
   ApiService({
     required this.auth,
-    this.baseUrl = "http://127.0.0.1:8000",
-  });
+    String? baseUrl,
+  }) : baseUrl = baseUrl ?? AppConfig.apiBaseUrl;
+
 
   // ----------------------------
   // DEFAULT HEADERS (AUTH TOKEN)

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'services/auth_service.dart';
 import 'services/api_service.dart';
+import 'config.dart';
+
 
 // Pages
 import 'pages/login_page.dart';
@@ -28,7 +30,6 @@ class PhishApp extends StatelessWidget {
         ProxyProvider<AuthService, ApiService>(
           update: (_, authService, __) => ApiService(
             auth: authService,
-            baseUrl: "http://127.0.0.1:8000",
           ),
           lazy: false,
         ),

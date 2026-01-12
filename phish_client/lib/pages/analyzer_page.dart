@@ -59,10 +59,11 @@ class _AnalyzerPageState extends State<AnalyzerPage> {
 
     if (res["statusCode"] == 200) {
       final det = res["body"]["detection"];
+
       setState(() {
         result = det["prediction"];
-        confidence = det["combined_score"];
-        suggestions = List<String>.from(det["suggestions"]);
+        confidence = (det["combined_score"] as num).toDouble();
+        suggestions = List<String>.from(det["suggestions"] ?? []);
       });
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -70,6 +71,7 @@ class _AnalyzerPageState extends State<AnalyzerPage> {
       );
     }
   }
+
 
   // ---------------- UI ----------------
 
